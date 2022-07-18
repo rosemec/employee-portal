@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+//import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Login from './Login';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NavMain from './NavMain';
+import { store } from './app/store'
+import { Provider } from 'react-redux'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Login />} />
+      <Route path='/create' element={<NavMain create={true} />} />
+      <Route path='/list' element={<NavMain create={false} />} />
+    </Routes>
+    </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
