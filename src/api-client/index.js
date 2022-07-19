@@ -7,6 +7,7 @@ export const employeeApi = createApi({
   endpoints: (builder) => ({
     getEmployees: builder.query({
       query: () => 'employee',
+      providesTags: ['employee']
     }),
     addNewEmployee: builder.mutation({
         query: empData => ({
@@ -14,12 +15,32 @@ export const employeeApi = createApi({
           method: 'POST',
           // Include the entire post object as the body of the request
           body: empData
-        })
-    })
+        }),
+        invalidatesTags: ['employee']
+    }),
+    getEmployee: builder.query({
+      query: id => `employee/${id}`
+    }),
+    deleteEmployee: builder.mutation({
+      query: id => ({
+        url: `employee/${id}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['employee']
   }),
+  updateEmployee: builder.mutation({
+    query: empData => ({
+      url: 'employee',
+      method: 'PUT',
+      // Include the entire post object as the body of the request
+      body: empData
+    }),
+    invalidatesTags: ['employee']
+}),
+})
 })
 console.log(employeeApi)
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetEmployeesQuery, useAddNewEmployeeMutation } = employeeApi
+export const { useGetEmployeesQuery, useAddNewEmployeeMutation, useDeleteEmployeeMutation, useGetEmployeeQuery } = employeeApi

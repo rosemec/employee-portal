@@ -16,11 +16,11 @@ const EmployeeList = () => {
           label="Filter By"
           options={[
             { key: 1, value: "name", name: "Employee Name" },
-            { key: 2, value: "id", name: "Employee ID" },
-            { key: 3, value: "joinDate", name: "Joining Date" },
+            { key: 2, value: "empId", name: "Employee ID" },
+            { key: 3, value: "joiningDate", name: "Joining Date" },
             { key: 4, value: "role", name: "Role" },
             { key: 5, value: "status", name: "Status" },
-            { key: 6, value: "exp", name: "Experience" },
+            { key: 6, value: "experience", name: "Experience" },
           ]}
         />
         <Link to="/create" className="create-emp">
@@ -48,11 +48,12 @@ const EmployeeList = () => {
               <ListItem
                 key={listItem.id}
                 name={listItem.name}
-                id={listItem.id}
-                joinDate={listItem.joiningDate}
+                empId={listItem.empId}
+                joiningDate={listItem.joiningDate}
                 role={listItem.role}
                 status={listItem.status}
-                exp={listItem.experience}
+                experience={listItem.experience}
+                id={listItem.id}
               />
             );
           })}

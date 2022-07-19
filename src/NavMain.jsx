@@ -6,6 +6,7 @@ import logo from "./assets/kv logo.png";
 import icon from "./assets/List.png";
 import { Link } from "react-router-dom";
 import employeeList from "./EmpList";
+import EmployeeDetails from "./components/EmployeeDetails";
 
 const NavMain = ({ create }) => {
   const [empList, setEmpList] = useState([]);

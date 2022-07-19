@@ -4,14 +4,15 @@ import InputField from "./InputField";
 import Select from "./Select";
 import "../styles/Form.css";
 import { useAddNewEmployeeMutation } from "../api-client";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [empData, setEmpData] = useState({
     name: "",
-    id: "",
-    joinDate: "",
+    empId: "",
+    joiningDate: "",
     email: "",
-    exp: "",
+    experience: "",
     address: "",
     idProof: "",
     role: "",
@@ -19,6 +20,7 @@ const Form = () => {
   });
 
   const [addNewEmployee, { isLoading }] = useAddNewEmployeeMutation();
+  const navigate = useNavigate();
 
   const handleChange = (name, value) => {
     console.log(name, value);
@@ -34,15 +36,16 @@ const Form = () => {
     addNewEmployee(empData).unwrap();
     setEmpData({
       name: "",
-      id: "",
-      joinDate: "",
+      empId: "",
+      joiningDate: "",
       email: "",
-      exp: "",
+      experience: "",
       address: "",
       idProof: "",
       role: "",
       status: "",
     });
+    navigate("/list");
   };
 
   const formFields = [
@@ -58,14 +61,14 @@ const Form = () => {
       label: "Employee ID",
       type: "text",
       placeholder: "Employee ID",
-      name: "id",
+      name: "empId",
     },
     {
       key: 3,
       label: "Joining Date",
       type: "date",
       placeholder: "Joining Date",
-      name: "joinDate",
+      name: "joiningDate",
     },
     {
       key: 4,
@@ -79,7 +82,7 @@ const Form = () => {
       label: "Experience",
       type: "text",
       placeholder: "Experience",
-      name: "exp",
+      name: "experience",
     },
     {
       key: 6,
@@ -96,7 +99,7 @@ const Form = () => {
     },
   ];
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form>
       <div className="details">
         {formFields.map((item) => {
           return (
@@ -140,7 +143,7 @@ const Form = () => {
         </div>
       </div>
       <div className="buttons">
-        <Button className="createb" label="Create" handleClick={() => {}} />
+        <Button className="createb" label="Create" handleClick={handleSubmit} />
         <Button className="cancelb" label="Cancel" handleClick={() => {}} />
       </div>
     </form>
