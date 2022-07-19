@@ -3,37 +3,59 @@ import Button from "./Button";
 import InputField from "./InputField";
 import Select from "./Select";
 import "../styles/Form.css";
-import { useAddNewEmployeeMutation, useGetEmployeeQuery } from "../api-client";
+import {
+  useAddNewEmployeeMutation,
+  useGetEmployeeQuery,
+  useUpdateEmployeeMutation,
+} from "../api-client";
 import { useNavigate } from "react-router-dom";
 
-const Form = () => {
-  const [empData, setEmpData] = useState({
-    name: "",
-    empId: "",
-    joiningDate: "",
-    email: "",
-    experience: "",
-    address: "",
-    idProof: "",
-    role: "",
-    status: "",
-  });
+const Form = ({ update, data }) => {
+  const initialState = data
+    ? data
+    : {
+        name: "",
+        empId: "",
+        joiningDate: "",
+        email: "",
+        experience: "",
+        address: "",
+        idProof: "",
+        role: "",
+        status: "",
+      };
+  const [empData, setEmpData] = useState(initialState);
 
-  const [addNewEmployee, { isLoading }] = useAddNewEmployeeMutation();
+  const [addNewEmployee] = useAddNewEmployeeMutation();
   const navigate = useNavigate();
+  const [updateEmployee] = useUpdateEmployeeMutation();
 
   const handleChange = (name, value) => {
-    console.log(name, value);
     setEmpData((prev) => {
       return { ...prev, [name]: value };
     });
-    console.log(empData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //updateEmpList(empData);
     addNewEmployee(empData).unwrap();
+    setEmpData({
+      name: "",
+      empId: "",
+      joiningDate: "",
+      email: "",
+      experience: "",
+      address: "",
+      idProof: "",
+      role: "",
+      status: "",
+    });
+    navigate("/list");
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    updateEmployee({ empData: empData, id: data.id }).unwrap();
     setEmpData({
       name: "",
       empId: "",
@@ -119,9 +141,10 @@ const Form = () => {
           <Select
             label="Role"
             options={[
-              { key: 1, value: "Role1", name: "Role1" },
-              { key: 2, value: "Role2", name: "Role2" },
-              { key: 3, value: "Role3", name: "Role3" },
+              { key: 1, value: "UI Engineer", name: "UI Engineer" },
+              { key: 2, value: "QA", name: "QA" },
+              { key: 3, value: "Full Stack", name: "Full Stack" },
+              { key: 4, value: "Devops", name: "Devops" },
             ]}
             onChange={handleChange}
             name="role"
@@ -143,8 +166,18 @@ const Form = () => {
         </div>
       </div>
       <div className="buttons">
-        <Button className="createb" label="Create" handleClick={handleSubmit} />
-        <Button className="cancelb" label="Cancel" handleClick={() => {}} />
+        <Button
+          className="createb"
+          label={update ? "Update" : "Create"}
+          handleClick={update ? handleUpdate : handleSubmit}
+        />
+        <Button
+          className="cancelb"
+          label="Cancel"
+          handleClick={() => {
+            navigate("/list");
+          }}
+        />
       </div>
     </form>
   );

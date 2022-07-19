@@ -1,26 +1,9 @@
-import React, { useState, useEffect } from "react";
-import EmployeeList from "./components/EmployeeList";
-import CreateEmployee from "./components/CreateEmployee";
 import "./styles/NavMain.css";
 import logo from "./assets/kv logo.png";
 import icon from "./assets/List.png";
 import { Link } from "react-router-dom";
-import employeeList from "./EmpList";
-import EmployeeDetails from "./components/EmployeeDetails";
 
 const NavMain = () => {
-  const [empList, setEmpList] = useState([]);
-
-  useEffect(() => {
-    setEmpList(employeeList);
-  }, []);
-
-  const updateEmpList = (emp) => {
-    setEmpList((prev) => {
-      return [...prev, emp];
-    });
-  };
-
   return (
     <div className="sidebar">
       <Link to="/list">

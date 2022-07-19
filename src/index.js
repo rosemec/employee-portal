@@ -5,7 +5,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Login from './Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import NavMain from './NavMain';
 import { store } from './app/store'
 import { Provider } from 'react-redux'
 import CreateEmployee from './components/CreateEmployee';

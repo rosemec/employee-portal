@@ -8,7 +8,7 @@ import NavMain from "../NavMain";
 
 const EmployeeDetails = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useGetEmployeeQuery(id);
+  const { data, isLoading } = useGetEmployeeQuery(id);
 
   return (
     <div className="app">
@@ -16,7 +16,7 @@ const EmployeeDetails = () => {
       <div className="emp-main">
         <div className="heading">
           <h1>Employee Details</h1>
-          <Link to="/create" className="create-emp edit-emp">
+          <Link to={`/edit/${id}`} className="create-emp edit-emp">
             <span className="create-emp-span">
               <MdOutlineEdit />
             </span>
@@ -47,7 +47,7 @@ const EmployeeDetails = () => {
             <div className="emp-details-column">
               <div className="emp-details-attribute">Status</div>
               <div
-                className={`emp-details-attribute ${data.status} span-status`}
+                className={`emp-details-attribute ${data.status} span-status-detail`}
               >
                 {data.status}
               </div>

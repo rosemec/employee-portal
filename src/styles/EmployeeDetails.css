@@ -2,7 +2,7 @@
     justify-content: space-between;
 }
 .edit-emp{
-    width: 10%;
+    width: 168px;
 }
 .emp-details{
     display: flex;
@@ -23,6 +23,10 @@
     padding: 20px;
     padding-bottom: 15px;
 }
+.emp-details-column>div:first-child{
+    color:#8B8D9D;
+    font-size: 14px;
+}
 .emp-details-attribute{
     padding-bottom: 8px;
 }
@@ -35,7 +39,7 @@
 .Inactive{
     background-color: #FFBFBF;
 }
-.span-status{
+.span-status-detail{
     border-radius: 90px 90px;
     padding: 5px;
     width: 70%;

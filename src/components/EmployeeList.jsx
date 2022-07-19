@@ -1,16 +1,16 @@
 import Select from "./Select";
 import ListItem from "./ListItem";
 import "../styles/EmployeeList.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetEmployeesQuery } from "../api-client";
 import NavMain from "../NavMain";
 
 const EmployeeList = () => {
   const { data, error, isLoading } = useGetEmployeesQuery();
-  console.log(data);
   const empList = data;
-  const displayEmployee = () => {
-    console.log();
+  const navigate = useNavigate();
+  const displayEmployee = (id) => {
+    navigate(`/list/${id}`);
   };
   return (
     <div className="app">
@@ -60,9 +60,7 @@ const EmployeeList = () => {
                   status={listItem.status}
                   experience={listItem.experience}
                   id={listItem.id}
-                  onClick={() => {
-                    displayEmployee(listItem.id);
-                  }}
+                  onClick={displayEmployee}
                 />
               );
             })}

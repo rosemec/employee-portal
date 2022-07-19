@@ -7,18 +7,25 @@ import "../styles/ListItem.css";
 const ListItem = (props) => {
   const [deleteEmployee, { isLoading }] = useDeleteEmployeeMutation();
   const navigate = useNavigate();
-  const handleDelete = () => {
+  const handleDelete = (e) => {
+    e.stopPropagation();
     console.log(`Delete ${props.id}`);
     deleteEmployee(props.id);
   };
 
-  const handleEdit = () => {
+  const handleEdit = (e) => {
+    e.stopPropagation();
     console.log(`Edit ${props.id}`);
     navigate(`/edit/${props.id}`);
   };
 
   return (
-    <div className="list-item">
+    <div
+      className="list-item"
+      onClick={() => {
+        props.onClick(props.id);
+      }}
+    >
       <div className="field">{props.name}</div>
       <div className="field">{props.empId}</div>
       <div className="field">{props.joiningDate}</div>
@@ -28,8 +35,18 @@ const ListItem = (props) => {
       </div>
       <div className="field">{props.experience}</div>
       <div className="field icons">
-        <MdOutlineDelete className="delete-icon" onClick={handleDelete} />
-        <MdOutlineEdit className="edit-icon" onClick={handleEdit} />
+        <MdOutlineDelete
+          className="delete-icon"
+          onClick={(e) => {
+            handleDelete(e);
+          }}
+        />
+        <MdOutlineEdit
+          className="edit-icon"
+          onClick={(e) => {
+            handleEdit(e);
+          }}
+        />
       </div>
     </div>
   );
