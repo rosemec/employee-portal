@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import employeeList from "./EmpList";
 import EmployeeDetails from "./components/EmployeeDetails";
 
-const NavMain = ({ create }) => {
+const NavMain = () => {
   const [empList, setEmpList] = useState([]);
 
   useEffect(() => {
@@ -22,21 +22,18 @@ const NavMain = ({ create }) => {
   };
 
   return (
-    <div className="app">
-      <div className="sidebar">
+    <div className="sidebar">
+      <Link to="/list">
+        <img src={logo} alt="KeyValue Logo" className="logo" />
+      </Link>
+      <nav className="sidebar-emp-list">
         <Link to="/list">
-          <img src={logo} alt="KeyValue Logo" className="logo" />
+          <div className="sidebar-list">
+            <img src={icon} alt="Employee List" className="listImg" />
+            <span className="emp-list-link">Employee List</span>
+          </div>
         </Link>
-        <nav className="sidebar-emp-list">
-          <Link to="/list">
-            <div className="sidebar-list">
-              <img src={icon} alt="Employee List" className="listImg" />
-              <span className="emp-list-link">Employee List</span>
-            </div>
-          </Link>
-        </nav>
-      </div>
-      {create ? <CreateEmployee /> : <EmployeeList />}
+      </nav>
     </div>
   );
 };

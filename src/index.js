@@ -8,6 +8,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavMain from './NavMain';
 import { store } from './app/store'
 import { Provider } from 'react-redux'
+import CreateEmployee from './components/CreateEmployee';
+import EmployeeList from './components/EmployeeList';
+import EmployeeDetails from './components/EmployeeDetails';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,8 +21,10 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Login />} />
-      <Route path='/create' element={<NavMain create={true} />} />
-      <Route path='/list' element={<NavMain create={false} />} />
+      <Route path='/create' element={<CreateEmployee />} />
+      <Route path='/list' element={<EmployeeList />} />
+      <Route path="/edit/:id" element={<CreateEmployee update={true} />} />
+      <Route path="/list/:id" element={<EmployeeDetails />} />
     </Routes>
     </BrowserRouter>
     </Provider>

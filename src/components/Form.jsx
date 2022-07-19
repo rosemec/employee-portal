@@ -3,7 +3,7 @@ import Button from "./Button";
 import InputField from "./InputField";
 import Select from "./Select";
 import "../styles/Form.css";
-import { useAddNewEmployeeMutation } from "../api-client";
+import { useAddNewEmployeeMutation, useGetEmployeeQuery } from "../api-client";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
