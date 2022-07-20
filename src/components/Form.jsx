@@ -168,7 +168,7 @@ const Form = ({ update, data }) => {
       <div className="buttons">
         <Button
           className="createb"
-          label={update ? "Update" : "Create"}
+          label={update ? "Edit" : "Create"}
           handleClick={update ? handleUpdate : handleSubmit}
         />
         <Button

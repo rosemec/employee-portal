@@ -16,7 +16,7 @@ export const employeeApi = createApi({
           // Include the entire post object as the body of the request
           body: empData
         }),
-        invalidatesTags: ['employee', 'singleEmployee']
+        invalidatesTags: ['employee']
     }),
     getEmployee: builder.query({
       query: id => `employee/${id}`,
@@ -27,7 +27,7 @@ export const employeeApi = createApi({
         url: `employee/${id}`,
         method: 'DELETE'
       }),
-      invalidatesTags: ['employee', 'singleEmployee']
+      invalidatesTags: ['employee']
   }),
   updateEmployee: builder.mutation({
     query: ({empData, id}) => ({
