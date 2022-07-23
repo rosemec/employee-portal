@@ -1,6 +1,6 @@
-import "./styles/NavMain.css";
-import logo from "./assets/kv logo.png";
-import icon from "./assets/List.png";
+import "../styles/NavMain.css";
+import logo from "../assets/kv logo.png";
+import icon from "../assets/List.png";
 import { Link } from "react-router-dom";
 
 const NavMain = () => {

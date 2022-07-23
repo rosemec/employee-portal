@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "./Form";
-import "../styles/CreateEmployee.css";
-import NavMain from "../NavMain";
+import Form from "./components/Form";
+import "./styles/CreateEmployee.css";
+import NavMain from "./components/NavMain";
 import { useParams } from "react-router-dom";
-import { useGetEmployeeQuery } from "../api-client";
+import { useGetEmployeeQuery } from "./api-client";
 
 const CreateEmployee = ({ update }) => {
   const { id } = useParams();

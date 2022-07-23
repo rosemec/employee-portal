@@ -7,9 +7,9 @@ import Login from './Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { store } from './app/store'
 import { Provider } from 'react-redux'
-import CreateEmployee from './components/CreateEmployee';
-import EmployeeList from './components/EmployeeList';
-import EmployeeDetails from './components/EmployeeDetails';
+import CreateEmployee from './CreateEmployee';
+import EmployeeList from './EmployeeList';
+import EmployeeDetails from './EmployeeDetails';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

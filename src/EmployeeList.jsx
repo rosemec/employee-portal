@@ -1,9 +1,9 @@
-import Select from "./Select";
-import ListItem from "./ListItem";
-import "../styles/EmployeeList.css";
+import Select from "./components/Select";
+import ListItem from "./components/ListItem";
+import "./styles/EmployeeList.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useGetEmployeesQuery } from "../api-client";
-import NavMain from "../NavMain";
+import { useGetEmployeesQuery } from "./api-client";
+import NavMain from "./components/NavMain";
 
 const EmployeeList = () => {
   const { data, error, isLoading } = useGetEmployeesQuery();

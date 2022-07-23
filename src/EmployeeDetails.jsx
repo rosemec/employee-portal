@@ -1,11 +1,11 @@
 import React from "react";
 import { MdOutlineEdit } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
-import "../styles/EmployeeList.css";
-import "../styles/EmployeeDetails.css";
-import { useGetEmployeeQuery } from "../api-client";
-import NavMain from "../NavMain";
-import fileImg from "../assets/file.png";
+import "./styles/EmployeeList.css";
+import "./styles/EmployeeDetails.css";
+import { useGetEmployeeQuery } from "./api-client";
+import NavMain from "./components/NavMain";
+import fileImg from "./assets/file.png";
 
 const EmployeeDetails = () => {
   const { id } = useParams();
