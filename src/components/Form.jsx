@@ -145,6 +145,7 @@ const Form = ({ update, data }) => {
               { key: 2, value: "QA", name: "QA" },
               { key: 3, value: "Full Stack", name: "Full Stack" },
               { key: 4, value: "Devops", name: "Devops" },
+              { key: 5, value: "Backend", name: "Backend" },
             ]}
             onChange={handleChange}
             name="role"

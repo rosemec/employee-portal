@@ -46,3 +46,6 @@
     text-align: center;
     color: #183072;
 }
+.fileImg{
+    background: transparent url('../assets/file.svg') 0% 0% no-repeat padding-box;
+}

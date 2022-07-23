@@ -5,6 +5,7 @@ import "../styles/EmployeeList.css";
 import "../styles/EmployeeDetails.css";
 import { useGetEmployeeQuery } from "../api-client";
 import NavMain from "../NavMain";
+import fileImg from "../assets/file.png";
 
 const EmployeeDetails = () => {
   const { id } = useParams();
@@ -62,8 +63,10 @@ const EmployeeDetails = () => {
               <div className="emp-details-attribute">{data.address}</div>
             </div>
             <div className="emp-details-column">
-              <div className="emp-details-attribute">{data.idProof}</div>
-              <div className="emp-details-attribute">""</div>
+              <div className="emp-details-attribute">Employee ID Proof</div>
+              <div className="emp-details-attribute fileImg">
+                <img src={fileImg}></img>
+              </div>
             </div>
           </div>
         )}

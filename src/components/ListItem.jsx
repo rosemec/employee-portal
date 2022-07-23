@@ -10,7 +10,8 @@ const ListItem = (props) => {
   const handleDelete = (e) => {
     e.stopPropagation();
     console.log(`Delete ${props.id}`);
-    deleteEmployee(props.id);
+    props.popDelete(props.id);
+    // deleteEmployee(props.id);
   };
 
   const handleEdit = (e) => {
